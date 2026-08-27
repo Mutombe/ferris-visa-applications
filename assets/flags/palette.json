@@ -1,0 +1,411 @@
+{
+  "$comment": "Official flag colours. Artwork: flag-icons 7.5.0 (MIT), recoloured to each issuing authority's published specification.",
+  "countries": {
+    "ae": {
+      "code": "AE",
+      "name": "United Arab Emirates",
+      "flag": "Flag of the UAE",
+      "officialRatio": "1:2",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "UAE Cabinet flag specification",
+      "svg": {
+        "4x3": "assets/flags/4x3/ae.svg",
+        "1x1": "assets/flags/1x1/ae.svg"
+      },
+      "colors": [
+        {
+          "name": "green",
+          "hex": "#00732F",
+          "reference": "Pantone 349 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "black",
+          "hex": "#000000",
+          "reference": "Black"
+        },
+        {
+          "name": "red",
+          "hex": "#FF0000",
+          "reference": "Pantone 485 C"
+        }
+      ]
+    },
+    "au": {
+      "code": "AU",
+      "name": "Australia",
+      "flag": "Australian National Flag",
+      "officialRatio": "1:2",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Awards and National Symbols Branch, PM&C",
+      "svg": {
+        "4x3": "assets/flags/4x3/au.svg",
+        "1x1": "assets/flags/1x1/au.svg"
+      },
+      "colors": [
+        {
+          "name": "navy",
+          "hex": "#012169",
+          "reference": "Pantone 280 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "red",
+          "hex": "#E4002B",
+          "reference": "Pantone 185 C"
+        }
+      ]
+    },
+    "br": {
+      "code": "BR",
+      "name": "Brazil",
+      "flag": "Auriverde",
+      "officialRatio": "7:10",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Lei 5.700/1971",
+      "svg": {
+        "4x3": "assets/flags/4x3/br.svg",
+        "1x1": "assets/flags/1x1/br.svg"
+      },
+      "colors": [
+        {
+          "name": "green",
+          "hex": "#009C3B",
+          "reference": "Pantone 355 C"
+        },
+        {
+          "name": "yellow",
+          "hex": "#FFDF00",
+          "reference": "Pantone 116 C"
+        },
+        {
+          "name": "blue",
+          "hex": "#002776",
+          "reference": "Pantone 280 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        }
+      ]
+    },
+    "ca": {
+      "code": "CA",
+      "name": "Canada",
+      "flag": "Maple Leaf",
+      "officialRatio": "1:2",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Canadian Heritage — Pantone 032 C",
+      "svg": {
+        "4x3": "assets/flags/4x3/ca.svg",
+        "1x1": "assets/flags/1x1/ca.svg"
+      },
+      "colors": [
+        {
+          "name": "red",
+          "hex": "#D52B1E",
+          "reference": "Pantone 032 C (common sRGB rendering)"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        }
+      ]
+    },
+    "cn": {
+      "code": "CN",
+      "name": "China",
+      "flag": "Five-star Red Flag",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "GB 12983-2004",
+      "svg": {
+        "4x3": "assets/flags/4x3/cn.svg",
+        "1x1": "assets/flags/1x1/cn.svg"
+      },
+      "colors": [
+        {
+          "name": "red",
+          "hex": "#EE1C25",
+          "reference": "GB 12983-2004 red"
+        },
+        {
+          "name": "yellow",
+          "hex": "#FFFF00",
+          "reference": "GB 12983-2004 yellow"
+        }
+      ]
+    },
+    "eu": {
+      "code": "EU",
+      "name": "European Union",
+      "flag": "Flag of Europe",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Council of Europe graphical specification",
+      "svg": {
+        "4x3": "assets/flags/4x3/eu.svg",
+        "1x1": "assets/flags/1x1/eu.svg"
+      },
+      "colors": [
+        {
+          "name": "reflex-blue",
+          "hex": "#003399",
+          "reference": "Pantone Reflex Blue"
+        },
+        {
+          "name": "gold",
+          "hex": "#FFCC00",
+          "reference": "Pantone Yellow"
+        }
+      ]
+    },
+    "gb": {
+      "code": "GB",
+      "name": "United Kingdom",
+      "flag": "Union Flag",
+      "officialRatio": "1:2",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "College of Arms / Flag Institute",
+      "svg": {
+        "4x3": "assets/flags/4x3/gb.svg",
+        "1x1": "assets/flags/1x1/gb.svg"
+      },
+      "colors": [
+        {
+          "name": "navy",
+          "hex": "#012169",
+          "reference": "Pantone 280 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "red",
+          "hex": "#C8102E",
+          "reference": "Pantone 186 C"
+        }
+      ]
+    },
+    "in": {
+      "code": "IN",
+      "name": "India",
+      "flag": "Tiranga",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "IS 1:1968 (Bureau of Indian Standards)",
+      "svg": {
+        "4x3": "assets/flags/4x3/in.svg",
+        "1x1": "assets/flags/1x1/in.svg"
+      },
+      "colors": [
+        {
+          "name": "saffron",
+          "hex": "#FF9933",
+          "reference": "India saffron"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "india-green",
+          "hex": "#138808",
+          "reference": "India green"
+        },
+        {
+          "name": "navy",
+          "hex": "#000080",
+          "reference": "Navy blue (Ashoka Chakra)"
+        }
+      ]
+    },
+    "jp": {
+      "code": "JP",
+      "name": "Japan",
+      "flag": "Nisshoki / Hinomaru",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Act on National Flag and Anthem (1999)",
+      "svg": {
+        "4x3": "assets/flags/4x3/jp.svg",
+        "1x1": "assets/flags/1x1/jp.svg"
+      },
+      "colors": [
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "crimson",
+          "hex": "#BC002D",
+          "reference": "JIS Z 8721 crimson"
+        }
+      ]
+    },
+    "nz": {
+      "code": "NZ",
+      "name": "New Zealand",
+      "flag": "Flag of New Zealand",
+      "officialRatio": "1:2",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Flags, Emblems, and Names Protection Act 1981",
+      "svg": {
+        "4x3": "assets/flags/4x3/nz.svg",
+        "1x1": "assets/flags/1x1/nz.svg"
+      },
+      "colors": [
+        {
+          "name": "royal-blue",
+          "hex": "#00247D",
+          "reference": "Pantone 280 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "red",
+          "hex": "#CC142B",
+          "reference": "Pantone 186 C"
+        }
+      ]
+    },
+    "sg": {
+      "code": "SG",
+      "name": "Singapore",
+      "flag": "Flag of Singapore",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Singapore Arms and Flag Rules",
+      "svg": {
+        "4x3": "assets/flags/4x3/sg.svg",
+        "1x1": "assets/flags/1x1/sg.svg"
+      },
+      "colors": [
+        {
+          "name": "red",
+          "hex": "#EF3340",
+          "reference": "Pantone 032 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        }
+      ]
+    },
+    "tr": {
+      "code": "TR",
+      "name": "Türkiye",
+      "flag": "Ay-yıldız",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Turkish Flag Law No. 2893",
+      "svg": {
+        "4x3": "assets/flags/4x3/tr.svg",
+        "1x1": "assets/flags/1x1/tr.svg"
+      },
+      "colors": [
+        {
+          "name": "red",
+          "hex": "#E30A17",
+          "reference": "Turkish Flag Law red"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        }
+      ]
+    },
+    "us": {
+      "code": "US",
+      "name": "United States",
+      "flag": "Stars and Stripes",
+      "officialRatio": "10:19",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Executive Order 10834 / Pantone translation",
+      "svg": {
+        "4x3": "assets/flags/4x3/us.svg",
+        "1x1": "assets/flags/1x1/us.svg"
+      },
+      "colors": [
+        {
+          "name": "old-glory-blue",
+          "hex": "#0A3161",
+          "reference": "Pantone 282 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "old-glory-red",
+          "hex": "#B31942",
+          "reference": "Pantone 193 C"
+        }
+      ]
+    },
+    "za": {
+      "code": "ZA",
+      "name": "South Africa",
+      "flag": "Flag of South Africa",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Bureau of Heraldry specification",
+      "svg": {
+        "4x3": "assets/flags/4x3/za.svg",
+        "1x1": "assets/flags/1x1/za.svg"
+      },
+      "colors": [
+        {
+          "name": "green",
+          "hex": "#007A4D",
+          "reference": "Pantone 3415 C"
+        },
+        {
+          "name": "gold",
+          "hex": "#FFB612",
+          "reference": "Pantone 1235 C"
+        },
+        {
+          "name": "red",
+          "hex": "#DE3831",
+          "reference": "Pantone 179 C"
+        },
+        {
+          "name": "blue",
+          "hex": "#002395",
+          "reference": "Pantone Reflex Blue"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        },
+        {
+          "name": "black",
+          "hex": "#000000",
+          "reference": "Black"
+        }
+      ]
+    }
+  }
+}
