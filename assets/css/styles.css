@@ -1087,3 +1087,81 @@ p{margin:0}
 .legal-body a,.contact-row a,.form-note a{padding-block:3px}
 .contact-row a{display:inline-block;min-height:24px}
 .nav-logo{min-height:34px;justify-content:center}
+
+/* ============================================================
+   Mobile hero rhythm
+   ------------------------------------------------------------
+   The gaps were 24 / 22 / 34px, which reads as one undifferentiated
+   stack. Premium vertical spacing is not uniform: it is tight where
+   elements belong together and open where they do not.
+
+     eyebrow -> headline    tight   (one unit, a label on a title)
+     headline -> paragraph  medium  (same voice, new thought)
+     paragraph -> finder    wide    (prose ends, a tool begins)
+
+   Scaled with svh so it breathes on a tall phone and compresses on
+   a short one instead of overflowing.
+   ============================================================ */
+@media(max-width:900px){
+  .hero-inner{
+    padding-top:clamp(100px,22vw,136px);
+    padding-bottom:clamp(26px,6vw,46px);
+  }
+  .hero-copy .eyebrow{margin-bottom:clamp(16px,2.2svh,22px)}
+  .hero-copy p{margin-top:clamp(18px,2.6svh,26px)}
+  .finder{margin-top:clamp(30px,5.4svh,56px)}
+
+  /* A normal phone has room for this to breathe. Generous rows, a real
+     gap before the button, and a hit area that fills the row. */
+  .finder{padding:10px}
+  .finder-field{min-height:58px;padding:11px 16px;gap:14px}
+  .finder-field select,.finder-field input{min-height:36px;padding:7px 0}
+  .finder-ic{width:36px;height:36px;flex-basis:36px}
+  .finder-field label{font-size:.68rem;letter-spacing:.11em;margin-bottom:3px}
+  .finder-go .btn{height:56px;margin-top:10px}
+}
+
+/* Only genuinely short viewports need compressing. Above this the layout
+   stays generous rather than being squeezed for no reason. */
+@media(max-width:900px) and (max-height:760px){
+  .hero-inner{padding-top:clamp(92px,20vw,116px);padding-bottom:22px}
+  .hero-copy .eyebrow{margin-bottom:14px}
+  .hero-copy p{margin-top:16px;font-size:1.02rem}
+  .finder{margin-top:26px;padding:8px}
+  .finder-field{min-height:50px;padding:8px 14px;gap:12px}
+  .finder-field select,.finder-field input{min-height:32px;padding:5px 0}
+  .finder-ic{width:32px;height:32px;flex-basis:32px}
+  .finder-go .btn{height:52px;margin-top:8px}
+}
+
+/* short viewports (iPhone SE, landscape phones): let the hero grow to fit its
+   content rather than crushing it into 100svh */
+@media(max-width:900px) and (max-height:640px){
+  .hero{min-height:auto}
+  .hero-inner{padding-top:clamp(88px,18vw,110px);padding-bottom:26px}
+}
+
+/* ---- matching rhythm for the inner-page heads on mobile ---- */
+@media(max-width:900px){
+  .pagehead-inner{
+    padding-top:clamp(104px,23vw,140px);
+    padding-bottom:clamp(28px,6vw,44px);
+  }
+  .crumbs{margin-bottom:16px}
+  .pagehead p{margin-top:clamp(14px,2.4svh,20px)}
+}
+
+/* ---- consistent section rhythm on mobile ---- */
+@media(max-width:600px){
+  .section{padding-top:clamp(56px,13vw,76px);padding-bottom:clamp(56px,13vw,76px)}
+  .section-head{margin-bottom:clamp(26px,7vw,36px)}
+  .section-head .eyebrow{margin-bottom:16px}
+  .section-head p{margin-top:14px}
+  .trust{padding-top:clamp(34px,9vw,48px);padding-bottom:clamp(34px,9vw,48px)}
+  .trust-grid{gap:clamp(22px,6vw,30px)}
+  .strip{margin-top:26px}
+  .strip-foot{margin-top:22px}
+  .u-mt-l{margin-top:34px}
+  .u-mt-m{margin-top:26px}
+  .feature-list{margin-top:26px;gap:18px}
+}
