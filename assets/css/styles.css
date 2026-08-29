@@ -1282,3 +1282,141 @@ p{margin:0}
   text-underline-offset:3px;
 }
 .handoff-back:hover{color:var(--forest-600)}
+
+/* ============================================================
+   Extras: insurance and eSIM, in the body rather than the hero
+   ============================================================ */
+.extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.6vw,22px)}
+@media(max-width:900px){.extras-grid{grid-template-columns:1fr}}
+.extra{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:start;
+  gap:clamp(16px,1.8vw,24px);
+  padding:clamp(24px,2.6vw,34px);border-radius:var(--r-md);
+  background:var(--cream);border:var(--bw) solid var(--line-2);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s var(--ease);
+}
+.extra:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--line)}
+.extra-ic{
+  width:52px;height:52px;flex:none;border-radius:16px;display:grid;place-items:center;
+  background:var(--forest-900);color:var(--amber);
+}
+.extra-ic svg{width:24px;height:24px}
+.extra h3{font-size:clamp(1.15rem,1.35vw,1.4rem);margin-bottom:10px}
+.extra p{font-size:.98rem;line-height:1.6}
+.extra-price{margin-top:14px;padding-top:14px;border-top:var(--bw) solid var(--line-2);font-size:.95rem;color:var(--muted)}
+.extra-price b{color:var(--forest-900);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.extra .arrow-btn{align-self:center}
+@media(max-width:520px){
+  .extra{grid-template-columns:auto 1fr;gap:16px}
+  .extra .arrow-btn{display:none}
+}
+
+/* ============================================================
+   How it works
+   ------------------------------------------------------------
+   A journey rather than four flat cards: a rail connects the
+   numbered nodes, each stage states how long it takes and who is
+   actually doing the work, and the strip underneath answers the
+   question the section really exists to answer, which is "how
+   much of this lands on me".
+   ============================================================ */
+.process{
+  position:relative;list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(14px,1.6vw,24px);
+}
+@media(max-width:1000px){.process{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.process{grid-template-columns:1fr}}
+
+.process-step{position:relative;display:flex;flex-direction:column;gap:16px}
+
+/* the rail: a dashed run from one node to the next */
+.process-step::after{
+  content:'';position:absolute;top:26px;left:calc(52px + 14px);
+  width:calc(100% - 52px);height:2px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 5px,transparent 5px 11px);
+}
+.process-step:last-child::after{display:none}
+@media(max-width:1000px){
+  .process-step:nth-child(2n)::after{display:none}
+}
+@media(max-width:620px){
+  .process-step::after{
+    top:52px;left:25px;width:2px;height:calc(100% - 34px);
+    background:repeating-linear-gradient(180deg,var(--line) 0 5px,transparent 5px 11px);
+  }
+  .process-step:nth-child(2n)::after{display:block}
+  .process-step:last-child::after{display:none}
+}
+
+.process-node{
+  position:relative;z-index:1;
+  width:52px;height:52px;flex:none;border-radius:16px;
+  display:grid;place-items:center;
+  background:var(--forest-900);color:var(--amber);
+  font-size:1.05rem;font-weight:700;letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;
+  box-shadow:0 0 0 6px var(--cream-2);
+  transition:transform .45s var(--ease),background .35s var(--ease),color .35s var(--ease);
+}
+.process-step:hover .process-node{transform:translateY(-3px);background:var(--amber);color:var(--forest-900)}
+
+.process-card{
+  position:relative;flex:1;
+  display:flex;flex-direction:column;      /* so the actor line can sit on the floor */
+  padding:clamp(22px,2.2vw,28px);border-radius:var(--r-md);
+  background:var(--white);border:var(--bw) solid var(--line-2);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s var(--ease);
+}
+.process-step:hover .process-card{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--line)}
+.process-icon{
+  position:absolute;top:20px;right:20px;width:22px;height:22px;
+  color:var(--forest-900);opacity:.14;
+}
+
+.process-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.process-when{
+  display:inline-block;padding:5px 11px;border-radius:var(--r-pill);
+  background:var(--cream-2);border:1.5px solid var(--line-2);
+  font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--forest-700);
+}
+.process-cost{
+  display:inline-block;padding:5px 11px;border-radius:var(--r-pill);
+  background:rgba(255,170,28,.16);border:1.5px solid rgba(255,170,28,.4);
+  font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:#8A5A05;
+}
+.process-card h3{font-size:clamp(1.12rem,1.25vw,1.32rem);line-height:1.22;margin-bottom:10px;padding-right:26px}
+.process-card > p{font-size:.97rem;line-height:1.6}
+
+.process-actor{
+  display:flex;align-items:center;gap:9px;
+  margin-top:auto;padding-top:16px;border-top:var(--bw) solid var(--line-2);
+  font-size:.88rem;font-weight:600;
+}
+.process-actor i{width:8px;height:8px;border-radius:50%;flex:none}
+.process-actor--us{color:var(--forest-600)}
+.process-actor--us i{background:var(--forest-600)}
+.process-actor--you{color:#B4791A}
+.process-actor--you i{background:var(--amber)}
+
+/* the payoff strip */
+.process-facts{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(14px,1.6vw,22px);
+  margin-top:clamp(28px,3.4vw,48px);
+}
+@media(max-width:760px){.process-facts{grid-template-columns:1fr}}
+.process-fact{
+  display:flex;align-items:baseline;gap:16px;
+  padding:clamp(20px,2vw,26px);border-radius:var(--r-md);
+  background:var(--forest-900);
+}
+.process-fact b{
+  font-size:clamp(2rem,2.6vw,2.9rem);font-weight:700;line-height:1;
+  color:var(--amber);letter-spacing:-.035em;
+  font-variant-numeric:tabular-nums lining-nums;flex:none;
+}
+.process-fact b span{font-size:.5em;font-weight:600;letter-spacing:0}
+.process-fact > span{font-size:.94rem;line-height:1.5;color:rgba(255,249,243,.76)}
