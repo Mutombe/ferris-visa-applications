@@ -1165,3 +1165,120 @@ p{margin:0}
   .u-mt-m{margin-top:26px}
   .feature-list{margin-top:26px;gap:18px}
 }
+
+/* ============================================================
+   Hero carousel
+   Image and copy cross-fade together. The copy stack is layered
+   so the hero does not jump height between slides of differing
+   line counts; the tallest slide sets the box.
+   ============================================================ */
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s var(--ease)}
+.hero-slide.is-active{opacity:1}
+.hero-slide img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(1.06) contrast(1.03);
+  transform:scale(1.06);transition:transform 7s linear;
+}
+.hero-slide.is-active img{transform:scale(1)}
+
+.hero-copy-stack{position:relative;display:grid}
+.hero-copy-stack > .hero-copy{
+  grid-area:1/1;
+  opacity:0;transform:translateY(14px);pointer-events:none;
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.hero-copy-stack > .hero-copy.is-active{opacity:1;transform:none;pointer-events:auto}
+/* Slides after the first carry their heading in a <p role="heading"> so the
+   page keeps a single <h1>. `.hero-copy p` (0,1,1) outranks `.h-display`
+   (0,1,0), so the display size has to be restated at matching specificity or
+   the heading silently renders at body size. */
+.hero-copy .h-display{
+  margin:0;color:var(--cream);max-width:16ch;text-wrap:balance;
+  font-size:clamp(2.75rem,1.7831rem + 3.9669vw,5.75rem);
+  font-weight:600;line-height:1.0;letter-spacing:-.038em;
+  text-shadow:0 1px 2px rgba(8,6,4,.30),0 4px 34px rgba(8,6,4,.34);
+}
+
+.hero-dots{display:flex;align-items:center;gap:10px;margin-top:clamp(22px,2.6vw,32px)}
+.hero-dot{
+  width:38px;height:26px;padding:0;display:grid;place-items:center;
+  background:none;border:0;cursor:pointer;
+}
+.hero-dot span{
+  display:block;width:34px;height:3px;border-radius:2px;
+  background:rgba(255,249,243,.34);
+  transition:background .4s var(--ease),width .4s var(--ease);
+}
+.hero-dot:hover span{background:rgba(255,249,243,.6)}
+.hero-dot.is-active span{background:var(--amber);width:34px}
+/* the progress fill reads as a timer on the active slide */
+.hero-dot.is-active span::after{
+  content:'';display:block;height:100%;border-radius:2px;background:var(--amber);
+}
+@media(max-width:600px){
+  .hero-dots{margin-top:20px;gap:8px}
+  .hero-dot{width:32px}
+  .hero-dot span{width:28px}
+  .hero-dot.is-active span{width:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-slide,.hero-copy-stack > .hero-copy{transition:none}
+  .hero-slide img{transition:none;transform:none}
+}
+
+/* ============================================================
+   Form handoff
+   The forms have no back end. On submit the answers are composed
+   into a message and the sender picks WhatsApp or email, so the
+   enquiry actually reaches a human either way.
+   ============================================================ */
+.handoff{display:none;margin-top:24px}
+.handoff.is-shown{display:block;animation:handoffIn .5s var(--ease)}
+@keyframes handoffIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.handoff-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.handoff-tick{
+  width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(17,102,57,.12);color:var(--forest-600);
+}
+.handoff-tick svg{width:20px;height:20px}
+.handoff-head b{display:block;color:var(--ink);font-size:1.1rem;font-weight:600;letter-spacing:-.015em;margin-bottom:4px}
+.handoff-head p{font-size:.96rem;color:var(--body);line-height:1.55}
+
+.handoff-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.handoff-choices{grid-template-columns:1fr}}
+.handoff-btn{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  padding:18px 20px;border-radius:var(--r-md);
+  border:var(--bw) solid var(--line-2);background:var(--cream);
+  transition:transform .35s var(--ease),border-color .3s var(--ease),background .3s var(--ease),box-shadow .35s var(--ease);
+}
+.handoff-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line)}
+.handoff-btn .ic{width:40px;height:40px;flex:0 0 40px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.handoff-btn .ic svg{width:21px;height:21px}
+.handoff-btn--wa .ic{background:#25D366}
+.handoff-btn--mail .ic{background:var(--forest-700)}
+.handoff-btn b{display:block;color:var(--ink);font-size:1rem;font-weight:600;letter-spacing:-.01em}
+.handoff-btn span{font-size:.86rem;color:var(--muted)}
+
+.handoff-preview{margin-top:18px;border:var(--bw) solid var(--line-2);border-radius:var(--r-md);overflow:hidden}
+.handoff-preview summary{
+  cursor:pointer;padding:14px 18px;background:var(--cream);
+  font-size:.9rem;font-weight:600;color:var(--forest-700);list-style:none;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.handoff-preview summary::-webkit-details-marker{display:none}
+.handoff-preview summary::after{content:'+';font-size:1.1rem;font-weight:700;line-height:1}
+.handoff-preview[open] summary::after{content:'\2212'}
+.handoff-preview pre{
+  margin:0;padding:18px;background:var(--white);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.82rem;line-height:1.65;color:var(--body);
+  white-space:pre-wrap;word-break:break-word;max-height:280px;overflow:auto;
+}
+.handoff-back{
+  margin-top:16px;font-size:.9rem;color:var(--muted);
+  background:none;border:0;padding:6px 2px;cursor:pointer;text-decoration:underline;
+  text-underline-offset:3px;
+}
+.handoff-back:hover{color:var(--forest-600)}

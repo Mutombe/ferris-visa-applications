@@ -62,6 +62,12 @@
   --flag-gb-red:#C8102E;
   --flag-gb-3:#C8102E;
 
+  /* Indonesia — Sang Saka Merah-Putih (Law 24/2009 on the National Flag) */
+  --flag-id-red:#CE1126;
+  --flag-id-1:#CE1126;
+  --flag-id-white:#FFFFFF;
+  --flag-id-2:#FFFFFF;
+
   /* India — Tiranga (IS 1:1968 (Bureau of Indian Standards)) */
   --flag-in-saffron:#FF9933;
   --flag-in-1:#FF9933;
@@ -130,6 +136,7 @@
 [data-country="cn"]{--flag-1:var(--flag-cn-1);--flag-2:var(--flag-cn-2)}
 [data-country="eu"]{--flag-1:var(--flag-eu-1);--flag-2:var(--flag-eu-2)}
 [data-country="gb"]{--flag-1:var(--flag-gb-1);--flag-2:var(--flag-gb-2);--flag-3:var(--flag-gb-3)}
+[data-country="id"]{--flag-1:var(--flag-id-1);--flag-2:var(--flag-id-2)}
 [data-country="in"]{--flag-1:var(--flag-in-1);--flag-2:var(--flag-in-2);--flag-3:var(--flag-in-3);--flag-4:var(--flag-in-4)}
 [data-country="jp"]{--flag-1:var(--flag-jp-1);--flag-2:var(--flag-jp-2)}
 [data-country="nz"]{--flag-1:var(--flag-nz-1);--flag-2:var(--flag-nz-2);--flag-3:var(--flag-nz-3)}

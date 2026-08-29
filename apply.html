@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Start an application | Ferris Visa Applications</title>
+<title>Start an application | Ferris Visa Consultants</title>
 <meta name="description" content="Begin your visa application with Ferris. Five minutes to submit, a named handler assigned within one working day, free assessment before any fee.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,9 +16,9 @@
 
 <div class="nav-wrap">
   <header class="nav">
-    <a class="nav-logo" href="index.html" aria-label="Ferris Visa Applications home">
+    <a class="nav-logo" href="index.html" aria-label="Ferris Visa Consultants home">
       <img src="assets/logos/wordmark-cream.png" alt="Ferris">
-      <span class="nav-logo-sub" aria-hidden="true"><span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span></span>Visa Applications</span>
+      <span class="nav-logo-sub" aria-hidden="true"><span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span></span>Visa Consultants</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
@@ -71,7 +71,7 @@
           <h2 class="h3 u-mt-s" style="margin-bottom:8px">Your application</h2>
           <p class="small" style="margin-bottom:26px">The required fields are the minimum we need to give you a useful answer.</p>
 
-          <form class="form-grid" data-demo data-apply novalidate>
+          <form class="form-grid" data-handoff data-apply novalidate>
             <div class="field">
               <label for="a-first">First name</label>
               <input id="a-first" name="firstName" type="text" placeholder="As in your passport" required>
@@ -100,17 +100,19 @@
             <div class="field">
               <label for="a-dest">Destination</label>
               <select id="a-dest" name="destination" data-flag-select="apply" required>
-                <option value="">Select a destination</option>
+              <option value="">Select a destination</option>
+                <option value="uae">Dubai &amp; the UAE</option>
+                <option value="china">China</option>
+                <option value="indonesia">Indonesia</option>
+                <option value="india">India</option>
+                <option value="schengen">Schengen Area / Europe</option>
                 <option value="uk">United Kingdom</option>
-                <option value="schengen">Schengen Area</option>
                 <option value="usa">United States</option>
                 <option value="canada">Canada</option>
-                <option value="uae">United Arab Emirates</option>
                 <option value="australia">Australia</option>
-                <option value="china">China</option>
                 <option value="japan">Japan</option>
                 <option value="other">Somewhere else</option>
-              </select>
+            </select>
               <span class="field-flag" data-flag-target="apply"></span>
             </div>
             <div class="field">
@@ -162,9 +164,39 @@
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
               </button>
               <p class="form-note">No payment is taken at this stage. We'll quote our fee and the government fee before any work begins.</p>
-              <div class="form-ok">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-                Received. A named handler will be assigned and will email you within one working day.
+              <div class="handoff" data-handoff-panel>
+                <div class="handoff-head">
+                  <span class="handoff-tick" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+                  </span>
+                  <span>
+                    <b>Your details are ready to send</b>
+                    <p>Pick where you would rather talk. Your answers are already written into the message, so you only have to press send.</p>
+                  </span>
+                </div>
+
+                <div class="handoff-choices">
+                  <a class="handoff-btn handoff-btn--wa" data-send="whatsapp" href="#" target="_blank" rel="noopener">
+                    <span class="ic" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.6-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3-.1.5.1.2.6 1.1 1.4 1.8 1 .9 1.8 1.1 2 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.1.1.6-.1 1.2Z"/></svg>
+                    </span>
+                    <span><b>Send on WhatsApp</b><span>Fastest reply, usually within the hour</span></span>
+                  </a>
+
+                  <a class="handoff-btn handoff-btn--mail" data-send="email" href="#">
+                    <span class="ic" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                    </span>
+                    <span><b>Send by email</b><span>Opens your mail app, reply within a day</span></span>
+                  </a>
+                </div>
+
+                <details class="handoff-preview">
+                  <summary>See exactly what will be sent</summary>
+                  <pre data-handoff-preview></pre>
+                </details>
+
+                <button class="handoff-back" type="button" data-handoff-back>Go back and change something</button>
               </div>
             </div>
           </form>
@@ -243,7 +275,7 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/logos/logo-cream.png" alt="Ferris Visa Applications">
+        <img src="assets/logos/logo-cream.png" alt="Ferris Visa Consultants">
         <p>A licensed visa consultancy. We have been preparing, checking and submitting applications for travellers, students and businesses since 2016.</p>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -261,6 +293,8 @@
           <li><a href="services.html#work">Work permits</a></li>
           <li><a href="services.html#family">Family &amp; spouse</a></li>
           <li><a href="services.html#appeals">Refusals &amp; appeals</a></li>
+          <li><a href="services.html#insurance">Travel insurance</a></li>
+          <li><a href="services.html#esim">Global eSIM</a></li>
         </ul>
       </div>
       <div>
@@ -284,7 +318,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© <span data-year>2026</span> Ferris Visa Applications. All rights reserved.</p>
+      <p>© <span data-year>2026</span> Ferris Visa Consultants. All rights reserved.</p>
       <nav aria-label="Legal"><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of service</a><a href="complaints.html">Complaints</a></nav>
     </div>
   </footer>

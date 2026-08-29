@@ -199,6 +199,30 @@
         }
       ]
     },
+    "id": {
+      "code": "ID",
+      "name": "Indonesia",
+      "flag": "Sang Saka Merah-Putih",
+      "officialRatio": "2:3",
+      "artworkRatio": "4:3 (normalised for a consistent UI grid)",
+      "authority": "Law 24/2009 on the National Flag",
+      "svg": {
+        "4x3": "assets/flags/4x3/id.svg",
+        "1x1": "assets/flags/1x1/id.svg"
+      },
+      "colors": [
+        {
+          "name": "red",
+          "hex": "#CE1126",
+          "reference": "Pantone 186 C"
+        },
+        {
+          "name": "white",
+          "hex": "#FFFFFF",
+          "reference": "Safe"
+        }
+      ]
+    },
     "in": {
       "code": "IN",
       "name": "India",

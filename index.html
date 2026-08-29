@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ferris Visa Applications | Visa Services for 60+ Countries</title>
-<meta name="description" content="Ferris Visa Applications prepares, checks and submits visa applications for more than 60 destinations. Fixed fees quoted upfront and a named case handler on every file.">
+<title>Ferris Visa Consultants | Visa Services for 60+ Countries</title>
+<meta name="description" content="Ferris Visa Consultants prepares, checks and submits visa applications for more than 60 destinations. Fixed fees quoted upfront and a named case handler on every file.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +17,9 @@
 <!-- ===================== NAV ===================== -->
 <div class="nav-wrap">
   <header class="nav">
-    <a class="nav-logo" href="index.html" aria-label="Ferris Visa Applications home">
+    <a class="nav-logo" href="index.html" aria-label="Ferris Visa Consultants home">
       <img src="assets/logos/wordmark-cream.png" alt="Ferris">
-      <span class="nav-logo-sub" aria-hidden="true"><span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span></span>Visa Applications</span>
+      <span class="nav-logo-sub" aria-hidden="true"><span class="bars"><span></span><span></span><span></span><span></span><span></span><span></span></span>Visa Consultants</span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -46,15 +46,41 @@
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
-    <div class="hero-media">
-      <img src="assets/img/station-wave.jpg" alt="A traveller waving on a station platform as her train arrives" fetchpriority="high">
+    <div class="hero-media" data-hero-media>
+      <div class="hero-slide is-active" data-slide="0">
+        <img src="assets/img/station-wave.jpg" alt="A traveller waving as her train arrives at the platform" fetchpriority="high">
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <img src="assets/img/travel-desk.jpg" alt="Passports, travel insurance documents and holiday accessories laid out on a desk" loading="lazy">
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <img src="assets/img/train-window.jpg" alt="A traveller connected on his phone while the countryside passes the window" loading="lazy">
+      </div>
     </div>
 
     <div class="hero-inner">
-      <div class="hero-copy">
-        <span class="eyebrow eyebrow--onDark"><i></i>Licensed visa consultancy</span>
-        <h1 class="h-display">Your visa application, sorted.</h1>
-        <p>We prepare, check and submit your application for more than 60 destinations. Tourist, business, study or work.</p>
+      <div class="hero-copy-stack" data-hero-copy>
+        <div class="hero-copy is-active" data-slide="0">
+          <span class="eyebrow eyebrow--onDark"><i></i>Licensed visa consultancy</span>
+          <h1 class="h-display">Your visa application, sorted.</h1>
+          <p>We prepare, check and submit your application for more than 60 destinations. Tourist, business, study or work.</p>
+        </div>
+        <div class="hero-copy" data-slide="1" aria-hidden="true">
+          <span class="eyebrow eyebrow--onDark"><i></i>Travel insurance included</span>
+          <p class="h-display" role="heading" aria-level="1">Covered before you fly.</p>
+          <p>Single trip and annual multi-trip cover arranged alongside your visa, underwritten by A-rated insurers and accepted by every consulate we file with.</p>
+        </div>
+        <div class="hero-copy" data-slide="2" aria-hidden="true">
+          <span class="eyebrow eyebrow--onDark"><i></i>Global eSIM</span>
+          <p class="h-display" role="heading" aria-level="1">Land connected, not roaming.</p>
+          <p>Data in over 190 countries the moment you touch down. Installed before you leave, no physical SIM, no airport queue and no roaming bill.</p>
+        </div>
+      </div>
+
+      <div class="hero-dots" role="tablist" aria-label="Hero slides">
+          <button class="hero-dot is-active" type="button" data-goto="0" aria-current="true" aria-label="Show slide 1: Licensed visa consultancy"><span></span></button>
+          <button class="hero-dot" type="button" data-goto="1" aria-label="Show slide 2: Travel insurance included"><span></span></button>
+          <button class="hero-dot" type="button" data-goto="2" aria-label="Show slide 3: Global eSIM"><span></span></button>
       </div>
 
       <!-- glass eligibility finder -->
@@ -67,14 +93,17 @@
             <label for="f-dest">Destination</label>
             <select id="f-dest" name="destination" data-flag-select="destination">
               <option value="">Where are you going?</option>
+              <option value="uae">Dubai &amp; the UAE</option>
+              <option value="china">China</option>
+              <option value="indonesia">Indonesia</option>
+              <option value="india">India</option>
+              <option value="schengen">Schengen Area / Europe</option>
               <option value="uk">United Kingdom</option>
-              <option value="schengen">Schengen Area</option>
               <option value="usa">United States</option>
               <option value="canada">Canada</option>
-              <option value="uae">United Arab Emirates</option>
               <option value="australia">Australia</option>
-              <option value="china">China</option>
               <option value="japan">Japan</option>
+              <option value="other">Somewhere else</option>
             </select>
           </span>
         </div>
@@ -320,8 +349,8 @@
       <div class="section-head reveal">
         <div>
           <span class="eyebrow eyebrow--onDark"><i></i>Where we work</span>
-          <h2 class="h2">More than 60 destinations</h2>
-          <p>Processing times and approval rates taken from our own case data, updated every Monday.</p>
+          <h2 class="h2">Dubai, China, Indonesia,<br>India and Europe</h2>
+          <p>These five account for most of the files we handle. Processing times and approval rates come from our own case data, updated every Monday.</p>
         </div>
         <div class="btn-pair">
           <a class="btn btn--onDark" href="destinations.html">All destinations</a>
@@ -332,55 +361,60 @@
       </div>
 
       <div class="tiles">
-        <a class="tile reveal" href="destinations.html#uk" data-country="gb">
+        <a class="tile reveal" href="destinations.html#uae" data-country="ae">
+          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/ae.svg" alt="Flag of Dubai &amp; the UAE" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">AE</span></span>
+            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <h3>Dubai &amp; the UAE</h3>
+          <p>30 day and 60 day tourist permits plus employment entry permits.</p>
+          <div class="tile-foot"><div><b>3 to 5 days</b>Typical decision</div><div><b>99%</b>Approval rate</div></div>
+        </a>
+
+        <a class="tile reveal" data-d="1" href="destinations.html#china" data-country="cn">
+          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/cn.svg" alt="Flag of China" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">CN</span></span>
+            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <h3>China</h3>
+          <p>Tourist, business and work categories.</p>
+          <div class="tile-foot"><div><b>7 to 14 days</b>Typical decision</div><div><b>97%</b>Approval rate</div></div>
+        </a>
+
+        <a class="tile reveal" data-d="2" href="destinations.html#indonesia" data-country="id">
+          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/id.svg" alt="Flag of Indonesia" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">ID</span></span>
+            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <h3>Indonesia</h3>
+          <p>Visit visas, extendable B211A social and business visas, and sponsor documents for longer stays in Bali and Jakarta.</p>
+          <div class="tile-foot"><div><b>5 to 10 days</b>Typical decision</div><div><b>98%</b>Approval rate</div></div>
+        </a>
+
+        <a class="tile reveal" href="destinations.html#india" data-country="in">
+          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/in.svg" alt="Flag of India" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">IN</span></span>
+            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <h3>India</h3>
+          <p>eVisa and consular routes for tourism, business and employment, including the OCI and PIO paperwork.</p>
+          <div class="tile-foot"><div><b>4 to 8 days</b>Typical decision</div><div><b>97%</b>Approval rate</div></div>
+        </a>
+
+        <a class="tile reveal" data-d="1" href="destinations.html#schengen" data-country="eu">
+          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/eu.svg" alt="Flag of Schengen &amp; Europe" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">EU</span></span>
+            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+          </div>
+          <h3>Schengen &amp; Europe</h3>
+          <p>One application covers 29 states.</p>
+          <div class="tile-foot"><div><b>10 days</b>Typical decision</div><div><b>96%</b>Approval rate</div></div>
+        </a>
+
+        <a class="tile reveal" data-d="2" href="destinations.html#uk" data-country="gb">
           <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/gb.svg" alt="Flag of United Kingdom" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">GB</span></span>
             <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </div>
           <h3>United Kingdom</h3>
-          <p>Standard Visitor, Skilled Worker, Student and family routes.</p>
+          <p>Standard Visitor, Skilled Worker, Student and family routes, filed through the London and regional visa application centres.</p>
           <div class="tile-foot"><div><b>15 days</b>Typical decision</div><div><b>97%</b>Approval rate</div></div>
         </a>
-
-        <a class="tile reveal" data-d="1" href="destinations.html#schengen" data-country="eu">
-          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/eu.svg" alt="Flag of European Union" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">EU</span></span>
-            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-          </div>
-          <h3>Schengen Area</h3>
-          <p>One application covers 29 countries. We work out which consulate to apply through.</p>
-          <div class="tile-foot"><div><b>10 days</b>Typical decision</div><div><b>96%</b>Approval rate</div></div>
-        </a>
-
-        <a class="tile reveal" data-d="2" href="destinations.html#usa" data-country="us">
-          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/us.svg" alt="Flag of United States" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">US</span></span>
-            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-          </div>
-          <h3>United States</h3>
-          <p>B1/B2, F1 and J1. We prepare the DS 160 and run interview practice.</p>
-          <div class="tile-foot"><div><b>3 to 8 weeks</b>Typical decision</div><div><b>94%</b>Approval rate</div></div>
-        </a>
-
-        <a class="tile reveal" href="destinations.html#canada" data-country="ca">
-          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/ca.svg" alt="Flag of Canada" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">CA</span></span>
-            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-          </div>
-          <h3>Canada</h3>
-          <p>Visitor records, study permits and IEC work permits.</p>
-          <div class="tile-foot"><div><b>4 weeks</b>Typical decision</div><div><b>95%</b>Approval rate</div></div>
-        </a>
-
-        <a class="tile reveal" data-d="1" href="destinations.html#uae" data-country="ae">
-          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/ae.svg" alt="Flag of United Arab Emirates" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">AE</span></span>
-            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-          </div>
-          <h3>United Arab Emirates</h3>
-          <p>Tourist, 60 day and employment entry permits.</p>
-          <div class="tile-foot"><div><b>3 to 5 days</b>Typical decision</div><div><b>99%</b>Approval rate</div></div>
-        </a>
-
-        <a class="tile reveal" data-d="2" href="destinations.html#australia" data-country="au">
-          <div class="tile-head"><span class="flag-chip flag-chip--onDark"><span class="flag-frame flag-frame--onDark flag-frame--lg"><img class="flag" src="assets/flags/4x3/au.svg" alt="Flag of Australia" width="40" height="30" loading="lazy" decoding="async"></span><span class="code">AU</span></span>
-            <span class="arrow-btn arrow-btn--glass" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-          </div>
+      </div>
           <h3>Australia</h3>
           <p>Subclass 600 visitor, 500 student and 417 working holiday.</p>
           <div class="tile-foot"><div><b>3 weeks</b>Typical decision</div><div><b>96%</b>Approval rate</div></div>
@@ -525,7 +559,7 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/logos/logo-cream.png" alt="Ferris Visa Applications">
+        <img src="assets/logos/logo-cream.png" alt="Ferris Visa Consultants">
         <p>A licensed visa consultancy. We have been preparing, checking and submitting applications for travellers, students and businesses since 2016.</p>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -544,6 +578,8 @@
           <li><a href="services.html#work">Work permits</a></li>
           <li><a href="services.html#family">Family &amp; spouse</a></li>
           <li><a href="services.html#appeals">Refusals &amp; appeals</a></li>
+          <li><a href="services.html#insurance">Travel insurance</a></li>
+          <li><a href="services.html#esim">Global eSIM</a></li>
         </ul>
       </div>
 
@@ -570,7 +606,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© <span data-year>2026</span> Ferris Visa Applications. All rights reserved.</p>
+      <p>© <span data-year>2026</span> Ferris Visa Consultants. All rights reserved.</p>
       <nav aria-label="Legal">
         <a href="privacy.html">Privacy policy</a>
         <a href="terms.html">Terms of service</a>

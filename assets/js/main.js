@@ -1,4 +1,4 @@
-/* Ferris Visa Applications — site behaviour */
+/* Ferris Visa Consultants — site behaviour */
 (function () {
   'use strict';
 
@@ -99,20 +99,6 @@
     return n % 1 === 0 ? String(Math.round(n)) : n.toFixed(1);
   }
 
-  /* ---------- forms (front-end only, no back end wired up) ---------- */
-  document.querySelectorAll('form[data-demo]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      var ok = form.querySelector('.form-ok');
-      if (ok) {
-        ok.classList.add('is-shown');
-        ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      form.reset();
-    });
-  });
-
   /* ---------- hero eligibility finder ---------- */
   var finder = document.querySelector('[data-finder]');
   if (finder) {
@@ -149,9 +135,11 @@
     schengen: ['eu', 'the Schengen Area'],
     usa: ['us', 'the United States'],
     canada: ['ca', 'Canada'],
-    uae: ['ae', 'the United Arab Emirates'],
+    uae: ['ae', 'Dubai and the UAE'],
     australia: ['au', 'Australia'],
     china: ['cn', 'China'],
+    indonesia: ['id', 'Indonesia'],
+    india: ['in', 'India'],
     japan: ['jp', 'Japan']
   };
 
@@ -207,6 +195,157 @@
     }, { rootMargin: '-120px 0px -55% 0px' });
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  /* ---------- hero carousel: image and copy advance together ---------- */
+  var heroMedia = document.querySelector('[data-hero-media]');
+  var heroCopy = document.querySelector('[data-hero-copy]');
+  if (heroMedia && heroCopy) {
+    var slides = heroMedia.querySelectorAll('.hero-slide');
+    var copies = heroCopy.querySelectorAll('.hero-copy');
+    var dots = document.querySelectorAll('.hero-dot');
+    var count = slides.length;
+    var index = 0;
+    var timer = null;
+    var DWELL = 6500;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var show = function (next) {
+      index = (next + count) % count;
+      for (var i = 0; i < count; i++) {
+        var on = i === index;
+        slides[i].classList.toggle('is-active', on);
+        copies[i].classList.toggle('is-active', on);
+        if (on) copies[i].removeAttribute('aria-hidden');
+        else copies[i].setAttribute('aria-hidden', 'true');
+        if (dots[i]) {
+          dots[i].classList.toggle('is-active', on);
+          if (on) dots[i].setAttribute('aria-current', 'true');
+          else dots[i].removeAttribute('aria-current');
+        }
+      }
+    };
+
+    var start = function () {
+      if (reduced || count < 2) return;
+      stop();
+      timer = setInterval(function () { show(index + 1); }, DWELL);
+    };
+    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        show(parseInt(d.dataset.goto, 10));
+        start(); // restart the dwell so a manual pick gets a full turn
+      });
+    });
+
+    // don't animate a hero nobody is looking at
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+      }, { threshold: 0.2 }).observe(heroMedia);
+    } else {
+      start();
+    }
+    document.addEventListener('visibilitychange', function () {
+      document.hidden ? stop() : start();
+    });
+  }
+
+  /* ---------- form handoff: compose the answers, then WhatsApp or email ----------
+     There is no back end. The form is turned into a readable message and the
+     sender chooses where it goes, so an enquiry is never silently lost. */
+  var WHATSAPP_NUMBER = '442038900190';         // digits only, no + or spaces
+  var ENQUIRY_EMAIL = 'hello@ferrisvisa.com';
+
+  function labelFor(field, form) {
+    if (field.id) {
+      var l = form.querySelector('label[for="' + field.id + '"]');
+      if (l) return l.textContent.trim();
+    }
+    var wrap = field.closest('.field');
+    if (wrap) {
+      var wl = wrap.querySelector('label');
+      if (wl) return wl.textContent.trim();
+    }
+    return field.name;
+  }
+
+  function readableValue(field) {
+    if (field.tagName === 'SELECT') {
+      var opt = field.options[field.selectedIndex];
+      return opt ? opt.textContent.trim() : '';
+    }
+    return (field.value || '').trim();
+  }
+
+  function composeMessage(form) {
+    var title = form.dataset.apply !== undefined
+      ? 'New visa application enquiry'
+      : 'New enquiry from the Ferris website';
+    var lines = [title, ''];
+    var notes = null;
+
+    form.querySelectorAll('input, select, textarea').forEach(function (field) {
+      if (!field.name || field.type === 'submit' || field.type === 'button') return;
+      var val = readableValue(field);
+      if (!val) return;
+      if (field.tagName === 'TEXTAREA') { notes = { label: labelFor(field, form), val: val }; return; }
+      lines.push(labelFor(field, form) + ': ' + val);
+    });
+
+    if (notes) { lines.push('', notes.label + ':', notes.val); }
+    lines.push('', 'Sent from ' + window.location.host + window.location.pathname);
+    return lines.join('\n');
+  }
+
+  document.querySelectorAll('form[data-handoff]').forEach(function (form) {
+    var panel = form.querySelector('[data-handoff-panel]');
+    var preview = form.querySelector('[data-handoff-preview]');
+    var back = form.querySelector('[data-handoff-back]');
+    var submit = form.querySelector('button[type="submit"]');
+    if (!panel) return;
+    var message = '';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      message = composeMessage(form);
+      if (preview) preview.textContent = message;
+      panel.classList.add('is-shown');
+      if (submit) submit.style.display = 'none';
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    if (back) {
+      back.addEventListener('click', function () {
+        panel.classList.remove('is-shown');
+        if (submit) submit.style.display = '';
+        form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // The choices are real links, with the href written in when the panel
+    // opens. A link survives popup blockers and is reachable by keyboard,
+    // which window.open() is not.
+    var waLink = panel.querySelector('[data-send="whatsapp"]');
+    var mailLink = panel.querySelector('[data-send="email"]');
+
+    function wireLinks() {
+      if (!message) message = composeMessage(form);
+      if (waLink) {
+        waLink.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+      }
+      if (mailLink) {
+        var subject = form.dataset.apply !== undefined
+          ? 'Visa application enquiry' : 'Website enquiry';
+        mailLink.href = 'mailto:' + ENQUIRY_EMAIL +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(message);
+      }
+    }
+    form.addEventListener('submit', wireLinks);
+  });
 
   /* ---------- footer year ---------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {

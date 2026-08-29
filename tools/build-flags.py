@@ -133,6 +133,17 @@ SPEC = {
             ("navy",       "#000080", "Navy blue (Ashoka Chakra)"),
         ],
     },
+    "id": {
+        "name": "Indonesia",
+        "flag": "Sang Saka Merah-Putih",
+        "ratio": "2:3",
+        "authority": "Law 24/2009 on the National Flag",
+        "corrections": {"#E70011": "#CE1126"},  # shipped value sits between the two common renderings
+        "palette": [
+            ("red",   "#CE1126", "Pantone 186 C"),
+            ("white", "#FFFFFF", "Safe"),
+        ],
+    },
     "za": {
         "name": "South Africa",
         "flag": "Flag of South Africa",

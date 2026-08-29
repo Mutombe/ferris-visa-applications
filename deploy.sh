@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploy Ferris Visa Applications to Render.
+# Deploy Ferris Visa Consultants to Render.
 #
 # Render static sites can only build from a Git repository, so this script
 # creates the repo, pushes, then creates and polls the Render service.
@@ -32,7 +32,7 @@ if api_gh "https://api.github.com/repos/$GITHUB_USER/$REPO_NAME" | grep -q '"ful
   echo "    already exists: $GITHUB_USER/$REPO_NAME"
 else
   api_gh -X POST https://api.github.com/user/repos \
-    -d "{\"name\":\"$REPO_NAME\",\"private\":true,\"description\":\"Ferris Visa Applications website\",\"has_issues\":false,\"has_wiki\":false}" \
+    -d "{\"name\":\"$REPO_NAME\",\"private\":true,\"description\":\"Ferris Visa Consultants website\",\"has_issues\":false,\"has_wiki\":false}" \
     > /dev/null
   echo "    created (private): $GITHUB_USER/$REPO_NAME"
 fi

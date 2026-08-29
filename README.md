@@ -1,4 +1,4 @@
-# Ferris Visa Applications — website
+# Ferris Visa Consultants — website
 
 Static site. No build step, no dependencies. Open `index.html` or serve the
 folder with any static server:
