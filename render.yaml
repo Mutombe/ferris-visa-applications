@@ -6,10 +6,16 @@ services:
     buildCommand: ""
     pullRequestPreviewsEnabled: false
     headers:
-      # long-lived caching for fingerprint-stable assets
+      # HTML must always revalidate, otherwise a CDN keeps serving the old
+      # page and the new asset URLs below never get picked up
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+      # safe to cache hard: tools/version-assets.py stamps a content hash on
+      # every CSS and JS link, so a change is a new URL
       - path: /assets/*
         name: Cache-Control
-        value: public, max-age=604800, must-revalidate
+        value: public, max-age=31536000, immutable
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
