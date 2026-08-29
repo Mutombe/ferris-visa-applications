@@ -273,6 +273,9 @@
 
   function readableValue(field) {
     if (field.tagName === 'SELECT') {
+      // an unchosen placeholder has a label but no value; treat it as blank
+      // so the message does not read "Visa type: Select a type"
+      if (!field.value) return '';
       var opt = field.options[field.selectedIndex];
       return opt ? opt.textContent.trim() : '';
     }
