@@ -287,17 +287,22 @@
       ? 'New visa application enquiry'
       : 'New enquiry from the Ferris website';
     var lines = [title, ''];
-    var notes = null;
+    // free-text answers go to the bottom, in the order they appear. Collected
+    // as a list rather than a single value: a form can have more than one.
+    var blocks = [];
 
     form.querySelectorAll('input, select, textarea').forEach(function (field) {
       if (!field.name || field.type === 'submit' || field.type === 'button') return;
       var val = readableValue(field);
       if (!val) return;
-      if (field.tagName === 'TEXTAREA') { notes = { label: labelFor(field, form), val: val }; return; }
+      if (field.tagName === 'TEXTAREA') {
+        blocks.push({ label: labelFor(field, form), val: val });
+        return;
+      }
       lines.push(labelFor(field, form) + ': ' + val);
     });
 
-    if (notes) { lines.push('', notes.label + ':', notes.val); }
+    blocks.forEach(function (b) { lines.push('', b.label + ':', b.val); });
     lines.push('', 'Sent from ' + window.location.host + window.location.pathname);
     return lines.join('\n');
   }

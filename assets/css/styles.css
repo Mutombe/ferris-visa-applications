@@ -1420,3 +1420,10 @@ p{margin:0}
 }
 .process-fact b span{font-size:.5em;font-weight:600;letter-spacing:0}
 .process-fact > span{font-size:.94rem;line-height:1.5;color:rgba(255,249,243,.76)}
+
+/* a shorter textarea for list-style answers, plus inline field help */
+.field textarea.field-compact{min-height:86px}
+.field-hint{
+  font-size:.86rem;line-height:1.5;color:var(--muted);
+  margin-top:-2px;
+}
