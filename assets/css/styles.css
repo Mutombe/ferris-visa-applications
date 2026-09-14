@@ -1616,3 +1616,9 @@ p{margin:0}
   .nav-phone{font-size:0;gap:0;width:42px;height:42px;padding:0;justify-content:center;background:rgba(255,255,255,.10)}
   .nav-phone svg{width:17px;height:17px}
 }
+
+/* build credit, last item in the footer's bottom row */
+.footer-credit{color:rgba(255,249,243,.5)}
+.footer-credit a{color:rgba(255,249,243,.78);text-decoration:underline;text-decoration-color:rgba(255,170,28,.5);text-underline-offset:3px;display:inline-block;min-height:24px;padding-block:3px}
+.footer-credit a:hover{color:var(--amber);text-decoration-color:var(--amber)}
+@media(max-width:600px){.footer-bottom{flex-direction:column;align-items:flex-start}}
