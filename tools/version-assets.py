@@ -1,10 +1,13 @@
 #!/usr/bin/env python
-"""Stamp CSS and JS links with a content hash.
+"""Stamp every asset URL in the HTML with a content hash.
 
-Without this, assets/css/styles.css is a stable URL sitting behind a long
-Cache-Control, so a CDN and every browser keep serving the old file after a
-deploy. Hashing the query string makes each build a distinct URL, which is
-what makes long caching safe in the first place.
+/assets/* is served `Cache-Control: public, max-age=31536000, immutable`, so a
+file that keeps its name after its content changes is never refetched by a
+browser or the CDN. Hashing the query string turns every change into a new
+URL, which is what makes that long cache safe.
+
+Covers src, href and every candidate inside srcset: stylesheets, scripts,
+photographs, logos, flags, avatars and the favicon.
 
 Run before committing:  python tools/version-assets.py
 """
@@ -13,44 +16,51 @@ import hashlib
 import pathlib
 import re
 
-ASSETS = [
-    "assets/css/flags.css",
-    "assets/css/styles.css",
-    "assets/js/main.js",
-]
+ROOT = pathlib.Path(".")
+# an asset path, optionally already carrying ?v=
+ASSET = re.compile(r"(assets/[A-Za-z0-9/_.-]+\.(?:css|js|jpg|jpeg|png|svg|webp|avif))(?:\?v=[0-9a-f]+)?")
+ATTR = re.compile(r'\b(src|href|srcset)="([^"]*)"')
+
+_cache = {}
 
 
-def digest(path: pathlib.Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()[:10]
+def version(rel: str) -> str:
+    if rel not in _cache:
+        p = ROOT / rel
+        _cache[rel] = hashlib.sha256(p.read_bytes()).hexdigest()[:10] if p.exists() else None
+    return _cache[rel]
+
+
+def stamp_value(value: str, missing: set) -> str:
+    def repl(m):
+        rel = m.group(1)
+        v = version(rel)
+        if v is None:
+            missing.add(rel)
+            return m.group(0)
+        return f"{rel}?v={v}"
+    return ASSET.sub(repl, value)
 
 
 def main() -> None:
-    versions = {}
-    for rel in ASSETS:
-        p = pathlib.Path(rel)
-        if not p.exists():
-            print("missing:", rel)
-            continue
-        versions[rel] = digest(p)
-
-    changed = 0
-    for page in sorted(pathlib.Path(".").glob("*.html")):
+    missing = set()
+    pages = changed = 0
+    for page in sorted(ROOT.glob("*.html")):
+        pages += 1
         html = page.read_text(encoding="utf-8")
-        before = html
-        for rel, ver in versions.items():
-            # match the asset with or without an existing ?v=
-            html = re.sub(
-                r'(["\'])' + re.escape(rel) + r'(?:\?v=[0-9a-f]+)?\1',
-                lambda m, r=rel, v=ver: f'{m.group(1)}{r}?v={v}{m.group(1)}',
-                html,
-            )
-        if html != before:
-            page.write_text(html, encoding="utf-8")
+        new = ATTR.sub(lambda m: f'{m.group(1)}="{stamp_value(m.group(2), missing)}"', html)
+        if new != html:
+            page.write_text(new, encoding="utf-8")
             changed += 1
 
-    for rel, ver in versions.items():
-        print(f"  {rel:26s} v={ver}")
-    print(f"stamped {changed} page(s)")
+    kinds = {}
+    for rel, v in _cache.items():
+        if v:
+            kinds[rel.split("/")[1]] = kinds.get(rel.split("/")[1], 0) + 1
+    print("versioned:", ", ".join(f"{n} {k}" for k, n in sorted(kinds.items())))
+    print(f"stamped {changed} of {pages} page(s)")
+    if missing:
+        print("WARNING, referenced but not on disk:", ", ".join(sorted(missing)))
 
 
 if __name__ == "__main__":

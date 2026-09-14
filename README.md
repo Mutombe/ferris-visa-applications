@@ -64,6 +64,18 @@ Statistics, prices and any counting figure use `font-variant-numeric:
 tabular-nums lining-nums` so digits share one advance width — the count-up
 animation cannot reflow its own layout mid-count, and columns of figures align.
 
+## Images
+
+All photography is licensed iStock. `tools/build-images.py` builds the web
+files from the originals: converted to sRGB (two originals ship in Adobe RGB,
+which renders washed out if the profile is simply dropped), downscaled with a
+light unsharp mask, given the site's warm grade, and saved as progressive JPEG
+at 1920px. The three hero slides also get 1024px and 2560px variants served
+through `srcset`, so a retina laptop gets a sharp picture and a phone does not
+download a desktop one.
+
+    python tools/build-images.py <folder of iStock-<id>.jpg originals>
+
 ## Hero treatment
 
 The hero photograph carries no flat overlay. Legibility comes from directional
@@ -122,17 +134,13 @@ how to add a country.
    attributed to Google breaches Google's own policies, the UK DMCC Act 2024
    and the US FTC rule on consumer reviews, so this must be wired to real data
    before launch. There is a comment marking the block in `index.html`.
-2. **The photographs are watermarked iStock previews, and now much more
-   visible.** Removing the heavy scrim from the hero means the watermark reads
-   clearly. Every image in
-   `assets/img/` carries a visible "iStock / Credit:" watermark. Licensed
-   copies need to be dropped in over the same filenames before this goes live.
-3. **The forms are front-end only.** `contact.html` and `apply.html` validate
-   and show a success state, but nothing is sent anywhere — wire them to a form
-   endpoint or a backend.
-4. **Flags in native `<select>`s** render beside the control, not inside the
+2. **The WhatsApp number is a placeholder.** The contact and apply forms have
+   no back end; they compose the answers into a message and open WhatsApp or
+   email. `WHATSAPP_NUMBER` at the top of `assets/js/main.js` is still the
+   landline and needs to be the real WhatsApp Business number.
+3. **Flags in native `<select>`s** render beside the control, not inside the
    options — an `<option>` cannot contain an image. A custom listbox would be
    needed to put flags in the dropdown itself.
-5. **Placeholder content:** phone number, email, Chancery Lane address, prices,
+4. **Placeholder content:** phone number, email, Chancery Lane address, prices,
    approval rates, processing times and testimonials are all invented and need
    replacing with real figures. Footer legal links (`#`) need real pages.
