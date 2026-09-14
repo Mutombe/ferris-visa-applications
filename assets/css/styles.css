@@ -1427,3 +1427,183 @@ p{margin:0}
   font-size:.86rem;line-height:1.5;color:var(--muted);
   margin-top:-2px;
 }
+
+/* ============================================================
+   Phone-width corrections (review of 2026-09-14)
+   ============================================================ */
+
+/* ---- glass that has to survive a bright photograph ----------------------
+   The tags and floating captions used a 16% white glass, which vanishes on
+   a sunlit window or a pale desk. A dark tinted glass keeps the blur and
+   stays legible on any image. Applies at every width. */
+.card-tag{
+  background:rgba(1,26,14,.44);
+  border-color:rgba(255,255,255,.26);
+}
+.floating-glass{
+  background:linear-gradient(135deg,rgba(1,26,14,.66),rgba(1,26,14,.42));
+  border-color:rgba(255,255,255,.22);
+}
+
+/* ---- closing call to action: the heading sat on the lightest part of the
+   gradient, so white text landed on a pale photo */
+.cta::before{
+  background:
+    linear-gradient(180deg,rgba(1,26,14,.58),rgba(1,26,14,.82)),
+    radial-gradient(80% 120% at 50% 0%,rgba(255,170,28,.14),rgba(1,26,14,.55));
+}
+.cta h2,.cta p{text-shadow:0 1px 18px rgba(1,26,14,.45)}
+
+/* ---- apply page: the form was the last thing on a phone ---- */
+.split-form{order:2}
+@media(max-width:940px){.split-form{order:-1}}
+
+/* ---- inline field help was 13.8px ---- */
+.field-hint{font-size:.9rem}
+
+/* ---- a button and its arrow belong on one row ----------------------------
+   The button went full width and pushed the round arrow onto a line of its
+   own. Pairs of two text buttons still stack. */
+@media(max-width:600px){
+  .btn-pair:has(> .arrow-btn){flex-wrap:nowrap}
+  .btn-pair:has(> .arrow-btn) > .btn{flex:1 1 auto}
+}
+
+/* ---- How it works: a real vertical timeline ------------------------------
+   Before, the dashed rail was drawn at the node centre but the card below
+   was full width, so the rail ran through every card's text. Now the node
+   has its own gutter, the card sits beside it, and the rail only exists in
+   that gutter, running from one node down to the next. */
+@media(max-width:620px){
+  .process{gap:0}
+  .process-step{
+    display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:14px;
+    padding-bottom:16px;
+  }
+  .process-node{
+    width:44px;height:44px;border-radius:14px;font-size:.95rem;
+    box-shadow:0 0 0 5px var(--cream-2);
+  }
+  .process-card{grid-column:2;padding:20px 20px 18px}
+  .process-card h3{padding-right:28px}
+  .process-icon{top:18px;right:18px}
+  .process-step::after,
+  .process-step:nth-child(2n)::after{
+    display:block;
+    top:52px;bottom:4px;left:21px;width:2px;height:auto;
+    background:repeating-linear-gradient(180deg,var(--line) 0 5px,transparent 5px 11px);
+  }
+  .process-step:last-child{padding-bottom:0}
+  .process-step:last-child::after{display:none}
+}
+
+/* ---- milestones and apply steps: same stacked-card problem ---------------
+   Number beside the text instead of floating above it. */
+@media(max-width:560px){
+  .step{
+    display:grid;grid-template-columns:44px minmax(0,1fr);
+    column-gap:16px;row-gap:4px;padding:20px 20px 22px;
+  }
+  .step-n{
+    grid-row:1 / span 2;margin:0;
+    width:44px;height:44px;border-radius:13px;font-size:.95rem;
+  }
+  .step h3{grid-column:2;margin:2px 0 4px}
+  .step p{grid-column:2}
+}
+
+/* ---- icon cards: stop the icon owning a column ---------------------------
+   Insurance, eSIM and the contact cards all put the icon in a left column
+   that ran the full height of the card, squeezing the copy into a strip
+   about half the screen wide. On a phone the icon sits beside the title
+   only, and everything else takes the full width. */
+@media(max-width:620px){
+  .extra{
+    grid-template-columns:48px minmax(0,1fr);
+    grid-template-areas:"icon title" "body body" "price price";
+    column-gap:14px;row-gap:0;align-items:center;
+    padding:22px 20px;
+  }
+  .extra > div{display:contents}
+  .extra-ic{grid-area:icon;width:48px;height:48px;border-radius:14px}
+  .extra h3{grid-area:title;margin:0}
+  .extra > div > p:not(.extra-price){grid-area:body;margin-top:14px}
+  .extra-price{grid-area:price;margin-top:16px}
+  .extra .arrow-btn{display:none}
+
+  .contact-row{
+    display:grid;grid-template-columns:42px minmax(0,1fr);
+    column-gap:14px;row-gap:2px;align-items:center;padding:20px;
+  }
+  .contact-row > div{display:contents}
+  .contact-row b{grid-column:2;grid-row:1;margin:0}
+  .contact-row > div > :not(b){grid-column:1 / -1}
+  .contact-row b + *{margin-top:10px}
+}
+
+/* ---- service cards were 470px tall on a phone, mostly sky ---- */
+@media(max-width:620px){
+  .card{aspect-ratio:1 / 1.08;min-height:0}
+}
+
+/* ---- pricing rows ---------------------------------------------------------
+   Every label and value took its own line, so each row ran about 280px and
+   the table about 2,500px. Price now sits beside the name, and the two
+   timings share a row. */
+@media(max-width:800px){
+  /* six equal tracks, so the timings line up from row to row whatever
+     width the price happens to be */
+  .price-row{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    column-gap:12px;row-gap:14px;align-items:start;
+  }
+  .price-row > div:nth-child(1){grid-column:1 / 5;grid-row:1}
+  .price-row > .pr-price{grid-column:5 / 7;grid-row:1;text-align:right;font-size:1.4rem}
+  .price-row > .pr-price small{white-space:nowrap}
+  .price-row > div:nth-child(2){grid-column:1 / 4;grid-row:2}
+  .price-row > div:nth-child(3){grid-column:4 / 7;grid-row:2}
+  .price-row .pr-val::before{letter-spacing:.1em;white-space:nowrap}
+}
+
+/* ---- footer: one 1,400px column became two ---- */
+@media(max-width:560px){
+  .footer-top{grid-template-columns:1fr 1fr;column-gap:20px;row-gap:34px}
+  .footer-brand,
+  .footer-top > div:last-child{grid-column:1 / -1}
+  .footer-links{gap:4px}
+  .footer-links a{padding-top:7px;padding-bottom:7px}
+}
+
+/* ---- card text over bright photographs ----------------------------------
+   The scrim reached full strength only at the very bottom edge, while the
+   title and price start about 60% down, where it was barely 25%. On a sunny
+   rooftop or a pale desk the title and price washed out. The darkening now
+   starts under the text, and the text carries a soft shadow as a backstop. */
+.card::after{
+  background:linear-gradient(180deg,
+    rgba(1,26,14,.30) 0%,
+    rgba(1,26,14,0) 24%,
+    rgba(1,26,14,.10) 42%,
+    rgba(1,26,14,.62) 62%,
+    rgba(1,26,14,.90) 100%);
+}
+.card-body h3,.card-meta,.card-note{text-shadow:0 1px 14px rgba(1,26,14,.55)}
+
+/* ---- narrowest phones: give prose back its width ------------------------ */
+@media(max-width:560px){
+  /* number and title share a row; the paragraph runs the full card width */
+  .step{align-items:center;row-gap:0}
+  .step-n{grid-row:1}
+  .step h3{grid-column:2;margin:0}
+  .step p{grid-column:1 / -1;margin-top:12px}
+}
+@media(max-width:400px){
+  /* the timeline needs its rail gutter, so the gutter gets narrower instead */
+  .process-step{grid-template-columns:36px minmax(0,1fr);column-gap:10px}
+  .process-node{width:36px;height:36px;border-radius:11px;font-size:.84rem;box-shadow:0 0 0 4px var(--cream-2)}
+  .process-step::after,
+  .process-step:nth-child(2n)::after{top:44px;left:17px}
+  .process-card{padding:18px 16px 16px}
+  .process-icon{display:none}
+  .process-card h3{padding-right:0}
+}

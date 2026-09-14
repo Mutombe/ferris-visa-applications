@@ -79,13 +79,15 @@
         cio.unobserve(el);
         var target = parseFloat(el.dataset.count);
         var suffix = el.dataset.suffix || '';
-        if (reduced) { el.textContent = format(target) + suffix; return; }
+        // years and similar are not quantities: 2016 must never read as "2,016"
+        var plain = el.hasAttribute('data-plain');
+        if (reduced) { el.textContent = format(target, plain) + suffix; return; }
         var start = performance.now();
         var dur = 1500;
         var tick = function (now) {
           var p = Math.min((now - start) / dur, 1);
           var eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = format(target * eased) + suffix;
+          el.textContent = format(target * eased, plain) + suffix;
           if (p < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -94,7 +96,8 @@
     counters.forEach(function (el) { cio.observe(el); });
   }
 
-  function format(n) {
+  function format(n, plain) {
+    if (plain) return String(Math.round(n));
     if (n >= 1000) return Math.round(n).toLocaleString('en-US');
     return n % 1 === 0 ? String(Math.round(n)) : n.toFixed(1);
   }
