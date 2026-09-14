@@ -134,13 +134,12 @@ how to add a country.
    attributed to Google breaches Google's own policies, the UK DMCC Act 2024
    and the US FTC rule on consumer reviews, so this must be wired to real data
    before launch. There is a comment marking the block in `index.html`.
-2. **The WhatsApp number is a placeholder.** The contact and apply forms have
-   no back end; they compose the answers into a message and open WhatsApp or
-   email. `WHATSAPP_NUMBER` at the top of `assets/js/main.js` is still the
-   landline and needs to be the real WhatsApp Business number.
+2. **The forms have no back end.** Contact and apply compose the answers into
+   a message and open WhatsApp or email. Enquiries go to +81 1307 022 0587,
+   set once as `WHATSAPP_NUMBER` at the top of `assets/js/main.js`.
 3. **Flags in native `<select>`s** render beside the control, not inside the
    options — an `<option>` cannot contain an image. A custom listbox would be
    needed to put flags in the dropdown itself.
-4. **Placeholder content:** phone number, email, Chancery Lane address, prices,
+4. **Placeholder content:** email, Chancery Lane address, prices,
    approval rates, processing times and testimonials are all invented and need
    replacing with real figures. Footer legal links (`#`) need real pages.

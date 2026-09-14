@@ -1607,3 +1607,12 @@ p{margin:0}
   .process-icon{display:none}
   .process-card h3{padding-right:0}
 }
+
+/* nav phone: never wrap. Between the mobile menu breakpoint and 1240px there
+   is not room for the full number, so it collapses to a round call button.
+   font-size:0 hides the digits visually but screen readers still read them. */
+.nav-phone{white-space:nowrap}
+@media(min-width:1081px) and (max-width:1240px){
+  .nav-phone{font-size:0;gap:0;width:42px;height:42px;padding:0;justify-content:center;background:rgba(255,255,255,.10)}
+  .nav-phone svg{width:17px;height:17px}
+}
